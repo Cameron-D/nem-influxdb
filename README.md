@@ -2,7 +2,7 @@
 
 A handful of scripts for reading NEM SCADA data and logging to InfluxDB.
 
-![Screenshot](https://i.imgur.com/wGQjMRW.jpg "Screenshot")
+![Screenshot](https://i.imgur.com/oRKIZbn.png "Screenshot")
 
 ## The scripts
 

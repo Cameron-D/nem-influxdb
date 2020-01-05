@@ -1,6 +1,6 @@
 # NEM Tools
 
-A handful of scripts for reading NEM scada data and logging to InfluxDB.
+A handful of scripts for reading NEM SCADA data and logging to InfluxDB.
 
 ![Screenshot](https://i.imgur.com/wGQjMRW.jpg "Screenshot")
 

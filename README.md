@@ -30,6 +30,10 @@ Contains SCADA data back to July 2009
 
 Continually reads the latest SCADA and PV data, made to always run. The supplied `Dockerfile` can be used to run in Docker.
 
+### grafana.json
+
+Grafana dashboard, requires the InfluxDB datasource set up and named "NEM"
+
 ### nem.py
 
 Old script that just scrapes GlobalRoam's live generation by fuel type data.

@@ -1,0 +1,2243 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 9,
+  "iteration": 1578194177158,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {
+        "Kerosene": "red",
+        "NaturalGasDiesel": "super-light-red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "NEM",
+      "fill": 9,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "hideTimeOverride": true,
+      "id": 2,
+      "interval": "5m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "BlackCoal",
+          "color": "rgb(0, 0, 0)"
+        },
+        {
+          "alias": "BrownCoal",
+          "color": "rgb(131, 80, 0)"
+        },
+        {
+          "alias": "Solar",
+          "color": "#cca300"
+        },
+        {
+          "alias": "Water",
+          "color": "#1f78c1"
+        },
+        {
+          "alias": "Wind",
+          "color": "#629e51"
+        },
+        {
+          "alias": "Bagasse",
+          "color": "#cffaff"
+        },
+        {
+          "alias": "Battery",
+          "color": "#ba43a9"
+        },
+        {
+          "alias": "NaturalGasFuelOil",
+          "color": "#c15c17"
+        },
+        {
+          "alias": "Unknown",
+          "color": "#e24d42"
+        },
+        {
+          "alias": "NaturalGas",
+          "color": "#2f575e"
+        },
+        {
+          "alias": "Diesel",
+          "color": "#bf1b00"
+        },
+        {
+          "alias": "CoalSeamMethane",
+          "color": "rgb(117, 37, 37)"
+        },
+        {
+          "alias": "ROOFTOPPV",
+          "color": "#eab839"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_[[series]]",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "[[series]]"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "scada",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "reading"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "6"
+                ],
+                "type": "moving_average"
+              },
+              {
+                "params": [
+                  "*1000000/($__interval_ms/ 1000 / 60 / 5 )"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "fuelType",
+              "operator": "=~",
+              "value": "/^$fueltype$/"
+            },
+            {
+              "condition": "AND",
+              "key": "region",
+              "operator": "=~",
+              "value": "/^$region$/"
+            },
+            {
+              "condition": "AND",
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Grid"
+            },
+            {
+              "condition": "AND",
+              "key": "generator",
+              "operator": "=~",
+              "value": "/^$generator$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Generation",
+      "tooltip": {
+        "shared": true,
+        "sort": 1,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "watt",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "NEM",
+      "fill": 9,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "hiddenSeries": false,
+      "hideTimeOverride": true,
+      "id": 4,
+      "interval": "5m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": true,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Renewables",
+          "color": "#7eb26d"
+        },
+        {
+          "alias": "Non-Renewables",
+          "color": "rgb(131, 80, 0)"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Renewables",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "scada",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "reading"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "6"
+                ],
+                "type": "moving_average"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "fuelType",
+              "operator": "=",
+              "value": "Bagasse"
+            },
+            {
+              "condition": "OR",
+              "key": "fuelType",
+              "operator": "=",
+              "value": "Battery"
+            },
+            {
+              "condition": "OR",
+              "key": "fuelType",
+              "operator": "=",
+              "value": "Solar"
+            },
+            {
+              "condition": "OR",
+              "key": "fuelType",
+              "operator": "=",
+              "value": "Water"
+            },
+            {
+              "condition": "OR",
+              "key": "fuelType",
+              "operator": "=",
+              "value": "Wind"
+            }
+          ]
+        },
+        {
+          "alias": "Non-Renewables",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "scada",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "reading"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "6"
+                ],
+                "type": "moving_average"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Bagasse"
+            },
+            {
+              "condition": "AND",
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Battery"
+            },
+            {
+              "condition": "AND",
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Solar"
+            },
+            {
+              "condition": "AND",
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Water"
+            },
+            {
+              "condition": "AND",
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Wind"
+            },
+            {
+              "condition": "AND",
+              "key": "fuelType",
+              "operator": "!=",
+              "value": "Grid"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Renewable Percentage",
+      "tooltip": {
+        "shared": false,
+        "sort": 1,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": "100",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 21,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "NEM",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Region",
+        "multi": true,
+        "name": "region",
+        "options": [],
+        "query": "show tag values from scada with key=region",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "NEM",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Fuel Type",
+        "multi": true,
+        "name": "fueltype",
+        "options": [],
+        "query": "show tag values from scada with key=fuelType",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "NEM",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Generator",
+        "multi": true,
+        "name": "generator",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "AGLHAL",
+            "value": "AGLHAL"
+          },
+          {
+            "selected": false,
+            "text": "AGLSOM",
+            "value": "AGLSOM"
+          },
+          {
+            "selected": false,
+            "text": "ANGAST1",
+            "value": "ANGAST1"
+          },
+          {
+            "selected": false,
+            "text": "ARWF1",
+            "value": "ARWF1"
+          },
+          {
+            "selected": false,
+            "text": "BALBG1",
+            "value": "BALBG1"
+          },
+          {
+            "selected": false,
+            "text": "BALBL1",
+            "value": "BALBL1"
+          },
+          {
+            "selected": false,
+            "text": "BALDHWF1",
+            "value": "BALDHWF1"
+          },
+          {
+            "selected": false,
+            "text": "BANN1",
+            "value": "BANN1"
+          },
+          {
+            "selected": false,
+            "text": "BARCALDN",
+            "value": "BARCALDN"
+          },
+          {
+            "selected": false,
+            "text": "BARCSF1",
+            "value": "BARCSF1"
+          },
+          {
+            "selected": false,
+            "text": "BARRON_1",
+            "value": "BARRON_1"
+          },
+          {
+            "selected": false,
+            "text": "BARRON_2",
+            "value": "BARRON_2"
+          },
+          {
+            "selected": false,
+            "text": "BASTYAN",
+            "value": "BASTYAN"
+          },
+          {
+            "selected": false,
+            "text": "BBTHREE1",
+            "value": "BBTHREE1"
+          },
+          {
+            "selected": false,
+            "text": "BBTHREE2",
+            "value": "BBTHREE2"
+          },
+          {
+            "selected": false,
+            "text": "BBTHREE3",
+            "value": "BBTHREE3"
+          },
+          {
+            "selected": false,
+            "text": "BDL01",
+            "value": "BDL01"
+          },
+          {
+            "selected": false,
+            "text": "BDL02",
+            "value": "BDL02"
+          },
+          {
+            "selected": false,
+            "text": "BLOWERNG",
+            "value": "BLOWERNG"
+          },
+          {
+            "selected": false,
+            "text": "BLUFF1",
+            "value": "BLUFF1"
+          },
+          {
+            "selected": false,
+            "text": "BNGSF1",
+            "value": "BNGSF1"
+          },
+          {
+            "selected": false,
+            "text": "BNGSF2",
+            "value": "BNGSF2"
+          },
+          {
+            "selected": false,
+            "text": "BOCORWF1",
+            "value": "BOCORWF1"
+          },
+          {
+            "selected": false,
+            "text": "BODWF1",
+            "value": "BODWF1"
+          },
+          {
+            "selected": false,
+            "text": "BRAEMAR1",
+            "value": "BRAEMAR1"
+          },
+          {
+            "selected": false,
+            "text": "BRAEMAR2",
+            "value": "BRAEMAR2"
+          },
+          {
+            "selected": false,
+            "text": "BRAEMAR3",
+            "value": "BRAEMAR3"
+          },
+          {
+            "selected": false,
+            "text": "BRAEMAR5",
+            "value": "BRAEMAR5"
+          },
+          {
+            "selected": false,
+            "text": "BRAEMAR6",
+            "value": "BRAEMAR6"
+          },
+          {
+            "selected": false,
+            "text": "BRAEMAR7",
+            "value": "BRAEMAR7"
+          },
+          {
+            "selected": false,
+            "text": "BROKENH1",
+            "value": "BROKENH1"
+          },
+          {
+            "selected": false,
+            "text": "BUTLERSG",
+            "value": "BUTLERSG"
+          },
+          {
+            "selected": false,
+            "text": "BW01",
+            "value": "BW01"
+          },
+          {
+            "selected": false,
+            "text": "BW02",
+            "value": "BW02"
+          },
+          {
+            "selected": false,
+            "text": "BW03",
+            "value": "BW03"
+          },
+          {
+            "selected": false,
+            "text": "BW04",
+            "value": "BW04"
+          },
+          {
+            "selected": false,
+            "text": "CALL_A_4",
+            "value": "CALL_A_4"
+          },
+          {
+            "selected": false,
+            "text": "CALL_B_1",
+            "value": "CALL_B_1"
+          },
+          {
+            "selected": false,
+            "text": "CALL_B_2",
+            "value": "CALL_B_2"
+          },
+          {
+            "selected": false,
+            "text": "CAPTL_WF",
+            "value": "CAPTL_WF"
+          },
+          {
+            "selected": false,
+            "text": "CATHROCK",
+            "value": "CATHROCK"
+          },
+          {
+            "selected": false,
+            "text": "CETHANA",
+            "value": "CETHANA"
+          },
+          {
+            "selected": false,
+            "text": "CG1",
+            "value": "CG1"
+          },
+          {
+            "selected": false,
+            "text": "CG2",
+            "value": "CG2"
+          },
+          {
+            "selected": false,
+            "text": "CG3",
+            "value": "CG3"
+          },
+          {
+            "selected": false,
+            "text": "CG4",
+            "value": "CG4"
+          },
+          {
+            "selected": false,
+            "text": "CHALLHWF",
+            "value": "CHALLHWF"
+          },
+          {
+            "selected": false,
+            "text": "CLARESF1",
+            "value": "CLARESF1"
+          },
+          {
+            "selected": false,
+            "text": "CLEMGPWF",
+            "value": "CLEMGPWF"
+          },
+          {
+            "selected": false,
+            "text": "CLOVER",
+            "value": "CLOVER"
+          },
+          {
+            "selected": false,
+            "text": "CLUNY",
+            "value": "CLUNY"
+          },
+          {
+            "selected": false,
+            "text": "CNUNDAWF",
+            "value": "CNUNDAWF"
+          },
+          {
+            "selected": false,
+            "text": "COLEASF1",
+            "value": "COLEASF1"
+          },
+          {
+            "selected": false,
+            "text": "CPP_3",
+            "value": "CPP_3"
+          },
+          {
+            "selected": false,
+            "text": "CPP_4",
+            "value": "CPP_4"
+          },
+          {
+            "selected": false,
+            "text": "CPSA",
+            "value": "CPSA"
+          },
+          {
+            "selected": false,
+            "text": "CROOKWF2",
+            "value": "CROOKWF2"
+          },
+          {
+            "selected": false,
+            "text": "CROWLWF1",
+            "value": "CROWLWF1"
+          },
+          {
+            "selected": false,
+            "text": "CSPVPS1",
+            "value": "CSPVPS1"
+          },
+          {
+            "selected": false,
+            "text": "CULLRGWF",
+            "value": "CULLRGWF"
+          },
+          {
+            "selected": false,
+            "text": "DALNTH01",
+            "value": "DALNTH01"
+          },
+          {
+            "selected": false,
+            "text": "DALNTHL1",
+            "value": "DALNTHL1"
+          },
+          {
+            "selected": false,
+            "text": "DARTM1",
+            "value": "DARTM1"
+          },
+          {
+            "selected": false,
+            "text": "DAYDSF1",
+            "value": "DAYDSF1"
+          },
+          {
+            "selected": false,
+            "text": "DDPS1",
+            "value": "DDPS1"
+          },
+          {
+            "selected": false,
+            "text": "DDSF1",
+            "value": "DDSF1"
+          },
+          {
+            "selected": false,
+            "text": "DEVILS_G",
+            "value": "DEVILS_G"
+          },
+          {
+            "selected": false,
+            "text": "DG_NSW1",
+            "value": "DG_NSW1"
+          },
+          {
+            "selected": false,
+            "text": "DG_QLD1",
+            "value": "DG_QLD1"
+          },
+          {
+            "selected": false,
+            "text": "DG_SA1",
+            "value": "DG_SA1"
+          },
+          {
+            "selected": false,
+            "text": "DG_TAS1",
+            "value": "DG_TAS1"
+          },
+          {
+            "selected": false,
+            "text": "DG_VIC1",
+            "value": "DG_VIC1"
+          },
+          {
+            "selected": false,
+            "text": "DRYCGT1",
+            "value": "DRYCGT1"
+          },
+          {
+            "selected": false,
+            "text": "DRYCGT2",
+            "value": "DRYCGT2"
+          },
+          {
+            "selected": false,
+            "text": "DRYCGT3",
+            "value": "DRYCGT3"
+          },
+          {
+            "selected": false,
+            "text": "EILDON1",
+            "value": "EILDON1"
+          },
+          {
+            "selected": false,
+            "text": "EILDON2",
+            "value": "EILDON2"
+          },
+          {
+            "selected": false,
+            "text": "EMERASF1",
+            "value": "EMERASF1"
+          },
+          {
+            "selected": false,
+            "text": "ER01",
+            "value": "ER01"
+          },
+          {
+            "selected": false,
+            "text": "ER02",
+            "value": "ER02"
+          },
+          {
+            "selected": false,
+            "text": "ER03",
+            "value": "ER03"
+          },
+          {
+            "selected": false,
+            "text": "ER04",
+            "value": "ER04"
+          },
+          {
+            "selected": false,
+            "text": "ERGT01",
+            "value": "ERGT01"
+          },
+          {
+            "selected": false,
+            "text": "FISHER",
+            "value": "FISHER"
+          },
+          {
+            "selected": false,
+            "text": "GANNBG1",
+            "value": "GANNBG1"
+          },
+          {
+            "selected": false,
+            "text": "GANNBL1",
+            "value": "GANNBL1"
+          },
+          {
+            "selected": false,
+            "text": "GANNSF1",
+            "value": "GANNSF1"
+          },
+          {
+            "selected": false,
+            "text": "GB01",
+            "value": "GB01"
+          },
+          {
+            "selected": false,
+            "text": "GERMCRK",
+            "value": "GERMCRK"
+          },
+          {
+            "selected": false,
+            "text": "GORDON",
+            "value": "GORDON"
+          },
+          {
+            "selected": false,
+            "text": "GRIFSF1",
+            "value": "GRIFSF1"
+          },
+          {
+            "selected": false,
+            "text": "GSTONE1",
+            "value": "GSTONE1"
+          },
+          {
+            "selected": false,
+            "text": "GSTONE2",
+            "value": "GSTONE2"
+          },
+          {
+            "selected": false,
+            "text": "GSTONE3",
+            "value": "GSTONE3"
+          },
+          {
+            "selected": false,
+            "text": "GSTONE4",
+            "value": "GSTONE4"
+          },
+          {
+            "selected": false,
+            "text": "GSTONE5",
+            "value": "GSTONE5"
+          },
+          {
+            "selected": false,
+            "text": "GSTONE6",
+            "value": "GSTONE6"
+          },
+          {
+            "selected": false,
+            "text": "GULLRSF1",
+            "value": "GULLRSF1"
+          },
+          {
+            "selected": false,
+            "text": "GULLRWF1",
+            "value": "GULLRWF1"
+          },
+          {
+            "selected": false,
+            "text": "GUNNING1",
+            "value": "GUNNING1"
+          },
+          {
+            "selected": false,
+            "text": "GUTHEGA",
+            "value": "GUTHEGA"
+          },
+          {
+            "selected": false,
+            "text": "HALLWF1",
+            "value": "HALLWF1"
+          },
+          {
+            "selected": false,
+            "text": "HALLWF2",
+            "value": "HALLWF2"
+          },
+          {
+            "selected": false,
+            "text": "HAMISF1",
+            "value": "HAMISF1"
+          },
+          {
+            "selected": false,
+            "text": "HAYMSF1",
+            "value": "HAYMSF1"
+          },
+          {
+            "selected": false,
+            "text": "HDWF1",
+            "value": "HDWF1"
+          },
+          {
+            "selected": false,
+            "text": "HDWF2",
+            "value": "HDWF2"
+          },
+          {
+            "selected": false,
+            "text": "HDWF3",
+            "value": "HDWF3"
+          },
+          {
+            "selected": false,
+            "text": "HPRG1",
+            "value": "HPRG1"
+          },
+          {
+            "selected": false,
+            "text": "HPRL1",
+            "value": "HPRL1"
+          },
+          {
+            "selected": false,
+            "text": "HUGSF1",
+            "value": "HUGSF1"
+          },
+          {
+            "selected": false,
+            "text": "HUMENSW",
+            "value": "HUMENSW"
+          },
+          {
+            "selected": false,
+            "text": "HUMEV",
+            "value": "HUMEV"
+          },
+          {
+            "selected": false,
+            "text": "HVGTS",
+            "value": "HVGTS"
+          },
+          {
+            "selected": false,
+            "text": "JBUTTERS",
+            "value": "JBUTTERS"
+          },
+          {
+            "selected": false,
+            "text": "JLA01",
+            "value": "JLA01"
+          },
+          {
+            "selected": false,
+            "text": "JLA02",
+            "value": "JLA02"
+          },
+          {
+            "selected": false,
+            "text": "JLA03",
+            "value": "JLA03"
+          },
+          {
+            "selected": false,
+            "text": "JLA04",
+            "value": "JLA04"
+          },
+          {
+            "selected": false,
+            "text": "JLB01",
+            "value": "JLB01"
+          },
+          {
+            "selected": false,
+            "text": "JLB02",
+            "value": "JLB02"
+          },
+          {
+            "selected": false,
+            "text": "JLB03",
+            "value": "JLB03"
+          },
+          {
+            "selected": false,
+            "text": "KAREEYA1",
+            "value": "KAREEYA1"
+          },
+          {
+            "selected": false,
+            "text": "KAREEYA2",
+            "value": "KAREEYA2"
+          },
+          {
+            "selected": false,
+            "text": "KAREEYA3",
+            "value": "KAREEYA3"
+          },
+          {
+            "selected": false,
+            "text": "KAREEYA4",
+            "value": "KAREEYA4"
+          },
+          {
+            "selected": false,
+            "text": "KARSF1",
+            "value": "KARSF1"
+          },
+          {
+            "selected": false,
+            "text": "KIATAWF1",
+            "value": "KIATAWF1"
+          },
+          {
+            "selected": false,
+            "text": "KPP_1",
+            "value": "KPP_1"
+          },
+          {
+            "selected": false,
+            "text": "KSP1",
+            "value": "KSP1"
+          },
+          {
+            "selected": false,
+            "text": "LADBROK1",
+            "value": "LADBROK1"
+          },
+          {
+            "selected": false,
+            "text": "LADBROK2",
+            "value": "LADBROK2"
+          },
+          {
+            "selected": false,
+            "text": "LD01",
+            "value": "LD01"
+          },
+          {
+            "selected": false,
+            "text": "LD02",
+            "value": "LD02"
+          },
+          {
+            "selected": false,
+            "text": "LD03",
+            "value": "LD03"
+          },
+          {
+            "selected": false,
+            "text": "LD04",
+            "value": "LD04"
+          },
+          {
+            "selected": false,
+            "text": "LEM_WIL",
+            "value": "LEM_WIL"
+          },
+          {
+            "selected": false,
+            "text": "LI_WY_CA",
+            "value": "LI_WY_CA"
+          },
+          {
+            "selected": false,
+            "text": "LKBONNY1",
+            "value": "LKBONNY1"
+          },
+          {
+            "selected": false,
+            "text": "LKBONNY2",
+            "value": "LKBONNY2"
+          },
+          {
+            "selected": false,
+            "text": "LKBONNY3",
+            "value": "LKBONNY3"
+          },
+          {
+            "selected": false,
+            "text": "LK_ECHO",
+            "value": "LK_ECHO"
+          },
+          {
+            "selected": false,
+            "text": "LNGS1",
+            "value": "LNGS1"
+          },
+          {
+            "selected": false,
+            "text": "LNGS2",
+            "value": "LNGS2"
+          },
+          {
+            "selected": false,
+            "text": "LONSDALE",
+            "value": "LONSDALE"
+          },
+          {
+            "selected": false,
+            "text": "LOYYB1",
+            "value": "LOYYB1"
+          },
+          {
+            "selected": false,
+            "text": "LOYYB2",
+            "value": "LOYYB2"
+          },
+          {
+            "selected": false,
+            "text": "LRSF1",
+            "value": "LRSF1"
+          },
+          {
+            "selected": false,
+            "text": "LYA1",
+            "value": "LYA1"
+          },
+          {
+            "selected": false,
+            "text": "LYA2",
+            "value": "LYA2"
+          },
+          {
+            "selected": false,
+            "text": "LYA3",
+            "value": "LYA3"
+          },
+          {
+            "selected": false,
+            "text": "LYA4",
+            "value": "LYA4"
+          },
+          {
+            "selected": false,
+            "text": "MACARTH1",
+            "value": "MACARTH1"
+          },
+          {
+            "selected": false,
+            "text": "MACKAYGT",
+            "value": "MACKAYGT"
+          },
+          {
+            "selected": false,
+            "text": "MACKNTSH",
+            "value": "MACKNTSH"
+          },
+          {
+            "selected": false,
+            "text": "MANSLR1",
+            "value": "MANSLR1"
+          },
+          {
+            "selected": false,
+            "text": "MBAHNTH",
+            "value": "MBAHNTH"
+          },
+          {
+            "selected": false,
+            "text": "MCKAY1",
+            "value": "MCKAY1"
+          },
+          {
+            "selected": false,
+            "text": "MEADOWBK",
+            "value": "MEADOWBK"
+          },
+          {
+            "selected": false,
+            "text": "MERCER01",
+            "value": "MERCER01"
+          },
+          {
+            "selected": false,
+            "text": "MEWF1",
+            "value": "MEWF1"
+          },
+          {
+            "selected": false,
+            "text": "MINTARO",
+            "value": "MINTARO"
+          },
+          {
+            "selected": false,
+            "text": "MLSP1",
+            "value": "MLSP1"
+          },
+          {
+            "selected": false,
+            "text": "MLWF1",
+            "value": "MLWF1"
+          },
+          {
+            "selected": false,
+            "text": "MOREESF1",
+            "value": "MOREESF1"
+          },
+          {
+            "selected": false,
+            "text": "MORTLK11",
+            "value": "MORTLK11"
+          },
+          {
+            "selected": false,
+            "text": "MORTLK12",
+            "value": "MORTLK12"
+          },
+          {
+            "selected": false,
+            "text": "MP1",
+            "value": "MP1"
+          },
+          {
+            "selected": false,
+            "text": "MP2",
+            "value": "MP2"
+          },
+          {
+            "selected": false,
+            "text": "MPP_1",
+            "value": "MPP_1"
+          },
+          {
+            "selected": false,
+            "text": "MPP_2",
+            "value": "MPP_2"
+          },
+          {
+            "selected": false,
+            "text": "MSTUART1",
+            "value": "MSTUART1"
+          },
+          {
+            "selected": false,
+            "text": "MSTUART2",
+            "value": "MSTUART2"
+          },
+          {
+            "selected": false,
+            "text": "MSTUART3",
+            "value": "MSTUART3"
+          },
+          {
+            "selected": false,
+            "text": "MTGELWF1",
+            "value": "MTGELWF1"
+          },
+          {
+            "selected": false,
+            "text": "MTMILLAR",
+            "value": "MTMILLAR"
+          },
+          {
+            "selected": false,
+            "text": "MURRAY",
+            "value": "MURRAY"
+          },
+          {
+            "selected": false,
+            "text": "MUSSELR1",
+            "value": "MUSSELR1"
+          },
+          {
+            "selected": false,
+            "text": "NBHWF1",
+            "value": "NBHWF1"
+          },
+          {
+            "selected": false,
+            "text": "NPS",
+            "value": "NPS"
+          },
+          {
+            "selected": false,
+            "text": "NYNGAN1",
+            "value": "NYNGAN1"
+          },
+          {
+            "selected": false,
+            "text": "OAKEY1",
+            "value": "OAKEY1"
+          },
+          {
+            "selected": false,
+            "text": "OAKEY2",
+            "value": "OAKEY2"
+          },
+          {
+            "selected": false,
+            "text": "OAKLAND1",
+            "value": "OAKLAND1"
+          },
+          {
+            "selected": false,
+            "text": "OSB_AG",
+            "value": "OSB_AG"
+          },
+          {
+            "selected": false,
+            "text": "PALOONA",
+            "value": "PALOONA"
+          },
+          {
+            "selected": false,
+            "text": "PARSF1",
+            "value": "PARSF1"
+          },
+          {
+            "selected": false,
+            "text": "PIONEER",
+            "value": "PIONEER"
+          },
+          {
+            "selected": false,
+            "text": "POAT110",
+            "value": "POAT110"
+          },
+          {
+            "selected": false,
+            "text": "POAT220",
+            "value": "POAT220"
+          },
+          {
+            "selected": false,
+            "text": "POR01",
+            "value": "POR01"
+          },
+          {
+            "selected": false,
+            "text": "POR03",
+            "value": "POR03"
+          },
+          {
+            "selected": false,
+            "text": "PORTWF",
+            "value": "PORTWF"
+          },
+          {
+            "selected": false,
+            "text": "PPCCGT",
+            "value": "PPCCGT"
+          },
+          {
+            "selected": false,
+            "text": "PTSTAN1",
+            "value": "PTSTAN1"
+          },
+          {
+            "selected": false,
+            "text": "PUMP1",
+            "value": "PUMP1"
+          },
+          {
+            "selected": false,
+            "text": "PUMP2",
+            "value": "PUMP2"
+          },
+          {
+            "selected": false,
+            "text": "QPS1",
+            "value": "QPS1"
+          },
+          {
+            "selected": false,
+            "text": "QPS2",
+            "value": "QPS2"
+          },
+          {
+            "selected": false,
+            "text": "QPS3",
+            "value": "QPS3"
+          },
+          {
+            "selected": false,
+            "text": "QPS4",
+            "value": "QPS4"
+          },
+          {
+            "selected": false,
+            "text": "QPS5",
+            "value": "QPS5"
+          },
+          {
+            "selected": false,
+            "text": "REECE1",
+            "value": "REECE1"
+          },
+          {
+            "selected": false,
+            "text": "REECE2",
+            "value": "REECE2"
+          },
+          {
+            "selected": false,
+            "text": "REPULSE",
+            "value": "REPULSE"
+          },
+          {
+            "selected": false,
+            "text": "ROMA_7",
+            "value": "ROMA_7"
+          },
+          {
+            "selected": false,
+            "text": "ROMA_8",
+            "value": "ROMA_8"
+          },
+          {
+            "selected": false,
+            "text": "ROOFTOPPV",
+            "value": "ROOFTOPPV"
+          },
+          {
+            "selected": false,
+            "text": "ROWALLAN",
+            "value": "ROWALLAN"
+          },
+          {
+            "selected": false,
+            "text": "ROYALLA1",
+            "value": "ROYALLA1"
+          },
+          {
+            "selected": false,
+            "text": "RPCG",
+            "value": "RPCG"
+          },
+          {
+            "selected": false,
+            "text": "RRSF1",
+            "value": "RRSF1"
+          },
+          {
+            "selected": false,
+            "text": "RT_NSW1",
+            "value": "RT_NSW1"
+          },
+          {
+            "selected": false,
+            "text": "RT_NSW2",
+            "value": "RT_NSW2"
+          },
+          {
+            "selected": false,
+            "text": "RT_NSW3",
+            "value": "RT_NSW3"
+          },
+          {
+            "selected": false,
+            "text": "RT_NSW4",
+            "value": "RT_NSW4"
+          },
+          {
+            "selected": false,
+            "text": "RT_NSW5",
+            "value": "RT_NSW5"
+          },
+          {
+            "selected": false,
+            "text": "RT_NSW6",
+            "value": "RT_NSW6"
+          },
+          {
+            "selected": false,
+            "text": "RT_QLD1",
+            "value": "RT_QLD1"
+          },
+          {
+            "selected": false,
+            "text": "RT_SA1",
+            "value": "RT_SA1"
+          },
+          {
+            "selected": false,
+            "text": "RT_SA2",
+            "value": "RT_SA2"
+          },
+          {
+            "selected": false,
+            "text": "RT_SA3",
+            "value": "RT_SA3"
+          },
+          {
+            "selected": false,
+            "text": "RT_SA4",
+            "value": "RT_SA4"
+          },
+          {
+            "selected": false,
+            "text": "RT_SA5",
+            "value": "RT_SA5"
+          },
+          {
+            "selected": false,
+            "text": "RT_SA6",
+            "value": "RT_SA6"
+          },
+          {
+            "selected": false,
+            "text": "RT_TAS1",
+            "value": "RT_TAS1"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC1",
+            "value": "RT_VIC1"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC10",
+            "value": "RT_VIC10"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC11",
+            "value": "RT_VIC11"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC12",
+            "value": "RT_VIC12"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC2",
+            "value": "RT_VIC2"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC3",
+            "value": "RT_VIC3"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC4",
+            "value": "RT_VIC4"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC5",
+            "value": "RT_VIC5"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC6",
+            "value": "RT_VIC6"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC7",
+            "value": "RT_VIC7"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC8",
+            "value": "RT_VIC8"
+          },
+          {
+            "selected": false,
+            "text": "RT_VIC9",
+            "value": "RT_VIC9"
+          },
+          {
+            "selected": false,
+            "text": "RUBICON",
+            "value": "RUBICON"
+          },
+          {
+            "selected": false,
+            "text": "SALTCRK1",
+            "value": "SALTCRK1"
+          },
+          {
+            "selected": false,
+            "text": "SAPHWF1",
+            "value": "SAPHWF1"
+          },
+          {
+            "selected": false,
+            "text": "SATGN1",
+            "value": "SATGN1"
+          },
+          {
+            "selected": false,
+            "text": "SATGS1",
+            "value": "SATGS1"
+          },
+          {
+            "selected": false,
+            "text": "SHGEN",
+            "value": "SHGEN"
+          },
+          {
+            "selected": false,
+            "text": "SHPUMP",
+            "value": "SHPUMP"
+          },
+          {
+            "selected": false,
+            "text": "SITHE01",
+            "value": "SITHE01"
+          },
+          {
+            "selected": false,
+            "text": "SMCSF1",
+            "value": "SMCSF1"
+          },
+          {
+            "selected": false,
+            "text": "SNOWNTH1",
+            "value": "SNOWNTH1"
+          },
+          {
+            "selected": false,
+            "text": "SNOWSTH1",
+            "value": "SNOWSTH1"
+          },
+          {
+            "selected": false,
+            "text": "SNOWTWN1",
+            "value": "SNOWTWN1"
+          },
+          {
+            "selected": false,
+            "text": "SNOWYP",
+            "value": "SNOWYP"
+          },
+          {
+            "selected": false,
+            "text": "SNUG1",
+            "value": "SNUG1"
+          },
+          {
+            "selected": false,
+            "text": "STAN_1",
+            "value": "STAN_1"
+          },
+          {
+            "selected": false,
+            "text": "STAN_2",
+            "value": "STAN_2"
+          },
+          {
+            "selected": false,
+            "text": "STAN_3",
+            "value": "STAN_3"
+          },
+          {
+            "selected": false,
+            "text": "STAN_4",
+            "value": "STAN_4"
+          },
+          {
+            "selected": false,
+            "text": "STARHLWF",
+            "value": "STARHLWF"
+          },
+          {
+            "selected": false,
+            "text": "STWF1",
+            "value": "STWF1"
+          },
+          {
+            "selected": false,
+            "text": "SWAN_E",
+            "value": "SWAN_E"
+          },
+          {
+            "selected": false,
+            "text": "TALWA1",
+            "value": "TALWA1"
+          },
+          {
+            "selected": false,
+            "text": "TARALGA1",
+            "value": "TARALGA1"
+          },
+          {
+            "selected": false,
+            "text": "TARONG_1",
+            "value": "TARONG_1"
+          },
+          {
+            "selected": false,
+            "text": "TARONG_2",
+            "value": "TARONG_2"
+          },
+          {
+            "selected": false,
+            "text": "TARONG_3",
+            "value": "TARONG_3"
+          },
+          {
+            "selected": false,
+            "text": "TARONG_4",
+            "value": "TARONG_4"
+          },
+          {
+            "selected": false,
+            "text": "TARRALEA",
+            "value": "TARRALEA"
+          },
+          {
+            "selected": false,
+            "text": "TNPS1",
+            "value": "TNPS1"
+          },
+          {
+            "selected": false,
+            "text": "TORRA1",
+            "value": "TORRA1"
+          },
+          {
+            "selected": false,
+            "text": "TORRA2",
+            "value": "TORRA2"
+          },
+          {
+            "selected": false,
+            "text": "TORRA3",
+            "value": "TORRA3"
+          },
+          {
+            "selected": false,
+            "text": "TORRA4",
+            "value": "TORRA4"
+          },
+          {
+            "selected": false,
+            "text": "TORRB1",
+            "value": "TORRB1"
+          },
+          {
+            "selected": false,
+            "text": "TORRB2",
+            "value": "TORRB2"
+          },
+          {
+            "selected": false,
+            "text": "TORRB3",
+            "value": "TORRB3"
+          },
+          {
+            "selected": false,
+            "text": "TORRB4",
+            "value": "TORRB4"
+          },
+          {
+            "selected": false,
+            "text": "TREVALLN",
+            "value": "TREVALLN"
+          },
+          {
+            "selected": false,
+            "text": "TRIBUTE",
+            "value": "TRIBUTE"
+          },
+          {
+            "selected": false,
+            "text": "TUMUT3",
+            "value": "TUMUT3"
+          },
+          {
+            "selected": false,
+            "text": "TUNGATIN",
+            "value": "TUNGATIN"
+          },
+          {
+            "selected": false,
+            "text": "TVCC201",
+            "value": "TVCC201"
+          },
+          {
+            "selected": false,
+            "text": "TVPP104",
+            "value": "TVPP104"
+          },
+          {
+            "selected": false,
+            "text": "UPPTUMUT",
+            "value": "UPPTUMUT"
+          },
+          {
+            "selected": false,
+            "text": "URANQ11",
+            "value": "URANQ11"
+          },
+          {
+            "selected": false,
+            "text": "URANQ12",
+            "value": "URANQ12"
+          },
+          {
+            "selected": false,
+            "text": "URANQ13",
+            "value": "URANQ13"
+          },
+          {
+            "selected": false,
+            "text": "URANQ14",
+            "value": "URANQ14"
+          },
+          {
+            "selected": false,
+            "text": "VP5",
+            "value": "VP5"
+          },
+          {
+            "selected": false,
+            "text": "VP6",
+            "value": "VP6"
+          },
+          {
+            "selected": false,
+            "text": "VPGS1",
+            "value": "VPGS1"
+          },
+          {
+            "selected": false,
+            "text": "VPGS2",
+            "value": "VPGS2"
+          },
+          {
+            "selected": false,
+            "text": "VPGS3",
+            "value": "VPGS3"
+          },
+          {
+            "selected": false,
+            "text": "VPGS4",
+            "value": "VPGS4"
+          },
+          {
+            "selected": false,
+            "text": "VPGS5",
+            "value": "VPGS5"
+          },
+          {
+            "selected": false,
+            "text": "VPGS6",
+            "value": "VPGS6"
+          },
+          {
+            "selected": false,
+            "text": "WATERLWF",
+            "value": "WATERLWF"
+          },
+          {
+            "selected": false,
+            "text": "WAUBRAWF",
+            "value": "WAUBRAWF"
+          },
+          {
+            "selected": false,
+            "text": "WEMENSF1",
+            "value": "WEMENSF1"
+          },
+          {
+            "selected": false,
+            "text": "WGWF1",
+            "value": "WGWF1"
+          },
+          {
+            "selected": false,
+            "text": "WHITSF1",
+            "value": "WHITSF1"
+          },
+          {
+            "selected": false,
+            "text": "WKIEWA1",
+            "value": "WKIEWA1"
+          },
+          {
+            "selected": false,
+            "text": "WKIEWA2",
+            "value": "WKIEWA2"
+          },
+          {
+            "selected": false,
+            "text": "WOODLWN1",
+            "value": "WOODLWN1"
+          },
+          {
+            "selected": false,
+            "text": "WOOLNTH1",
+            "value": "WOOLNTH1"
+          },
+          {
+            "selected": false,
+            "text": "WPWF",
+            "value": "WPWF"
+          },
+          {
+            "selected": false,
+            "text": "WRSF1",
+            "value": "WRSF1"
+          },
+          {
+            "selected": false,
+            "text": "WRWF1",
+            "value": "WRWF1"
+          },
+          {
+            "selected": false,
+            "text": "W_HOE_1",
+            "value": "W_HOE_1"
+          },
+          {
+            "selected": false,
+            "text": "W_HOE_2",
+            "value": "W_HOE_2"
+          },
+          {
+            "selected": false,
+            "text": "YABULU",
+            "value": "YABULU"
+          },
+          {
+            "selected": false,
+            "text": "YABULU2",
+            "value": "YABULU2"
+          },
+          {
+            "selected": false,
+            "text": "YAMBUKWF",
+            "value": "YAMBUKWF"
+          },
+          {
+            "selected": false,
+            "text": "YARWUN_1",
+            "value": "YARWUN_1"
+          },
+          {
+            "selected": false,
+            "text": "YSWF1",
+            "value": "YSWF1"
+          },
+          {
+            "selected": false,
+            "text": "YWPS1",
+            "value": "YWPS1"
+          },
+          {
+            "selected": false,
+            "text": "YWPS2",
+            "value": "YWPS2"
+          },
+          {
+            "selected": false,
+            "text": "YWPS3",
+            "value": "YWPS3"
+          },
+          {
+            "selected": false,
+            "text": "YWPS4",
+            "value": "YWPS4"
+          }
+        ],
+        "query": "show tag values from scada with key=generator",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "fuelType",
+          "value": "fuelType"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Group By",
+        "multi": false,
+        "name": "series",
+        "options": [
+          {
+            "selected": false,
+            "text": "generator",
+            "value": "generator"
+          },
+          {
+            "selected": true,
+            "text": "fuelType",
+            "value": "fuelType"
+          },
+          {
+            "selected": false,
+            "text": "region",
+            "value": "region"
+          }
+        ],
+        "query": "generator, fuelType, region",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now-30m"
+  },
+  "timepicker": {
+    "nowDelay": "5m",
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "NEM SCADA",
+  "uid": "YGCDOxLmk",
+  "version": 30
+}

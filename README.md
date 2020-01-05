@@ -14,15 +14,15 @@ Reads and stores all the old archive data published by AEMO. Needs InfluxDB host
 
 There are 5 main methods in this script:
 
-#### `process_scada_current` and `process_solar_current`
+**`process_scada_current` and `process_solar_current`**
 
 Processes the latest data for both SCADA and Rooftop PV (about 2 days worth of 5-minute data for SCADA and 14 days worth of 30-minute PV data).
 
-#### `process_scada_archive` and `process_solar_archive`
+**`process_scada_archive` and `process_solar_archive`**
 
 Processes the monthly archives for SCADA and Rooftop PV (about 1 year worth of 5-minute data for SCADA and 18 months worth of 30-minute PV data).
 
-#### `process_scada_historic`
+**`process_scada_historic`**
 
 Contains SCADA data back to July 2009
 

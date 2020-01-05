@@ -2,6 +2,8 @@
 
 A handful of scripts for reading NEM scada data and logging to InfluxDB.
 
+![Screenshot](https://i.imgur.com/wGQjMRW.jpg "Screenshot")
+
 ## The scripts
 
 ### gengenlist.py

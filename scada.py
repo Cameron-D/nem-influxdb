@@ -3,7 +3,7 @@ from datetime import datetime
 from urllib.request import urlopen
 from io import BytesIO, StringIO
 from zipfile import ZipFile
-import time, re, csv, dateutil.parser
+import time, re, csv, dateutil.parser, traceback
 
 INFLUX_HOST = ""
 
@@ -142,7 +142,7 @@ while 1:
     except Exception as ex:
         print("Collection Error:")
         print(ex)
-        print(ex.with_traceback())
+        traceback.print_exc()
     
     sleep_time = 60.0 - ((time.time() - starttime) % 60.0)
     time.sleep(sleep_time)
